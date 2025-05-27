@@ -20,3 +20,5 @@ yarn-error.log
 /.windsurf
 
 instruction.txt
+package-lock.json
+composer.lock

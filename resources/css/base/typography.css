@@ -1,0 +1,27 @@
+.text--heading {
+	@apply
+    text-title-xl
+    lg:text-title-3xl
+    font-extrabold
+}
+
+.text--sub-heading {
+	@apply
+    text-title-lg
+    lg:text-title-xl
+    font-bold
+}
+
+.text--title {
+	@apply
+    text-title-sm
+    lg:text-title-md
+    font-bold
+}
+
+.text--sub-title {
+	@apply
+    text-title-xs
+    lg:text-title-sm
+    font-bold
+}

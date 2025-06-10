@@ -1,0 +1,19 @@
+.loader__wrapper{
+    @apply
+      fixed
+      top-1/2
+      left-0
+      w-full
+      h-auto
+      flex
+      rounded-lg
+      justify-center
+      items-center
+      z-999999
+  }
+  
+  .loader__wrapper img {
+    @apply
+      bg-white-transparent
+      rounded-2xl
+  }

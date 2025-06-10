@@ -1,0 +1,135 @@
+.btn {
+	@apply
+		inline-block
+		py-2
+		px-4
+		rounded-md
+		cursor-pointer
+		text-center
+		align-middle
+		font-semibold
+		text-base
+}
+
+.btn--sm {
+	@apply
+		inline-block
+		py-2
+		px-3
+		rounded-md
+		cursor-pointer
+		text-center
+		align-middle
+		text-sm
+}
+
+.btn--primary {
+  @apply
+    bg-light-primary
+    text-white
+    dark:bg-dark-primary
+    hover:bg-light-primary/80
+	focus:bg-light-primary/80
+	active:bg-light-primary/80
+    dark:hover:bg-dark-primary/80
+    dark:focus:bg-dark-primary/80
+    dark:active:bg-dark-primary/80
+    transition
+	ease-in-out
+	duration-150
+}
+
+
+.btn--secondary {
+	@apply 
+		text-white
+		bg-slate-400
+		hover:bg-slate-400
+		focus:bg-slate-500
+		active:bg-slate-500
+		focus:outline-none
+		focus:ring-2
+		focus:ring-slate-500
+		focus:ring-offset-2
+		transition
+		ease-in-out
+		duration-150
+}
+
+/* Danger Button */
+.btn--danger {
+	@apply 
+		text-white
+		bg-red-500
+		hover:bg-red-600
+		focus:bg-red-700
+		active:bg-red-700
+		focus:outline-none
+		focus:ring-2
+		focus:ring-red-500
+		focus:ring-offset-2
+		transition
+		ease-in-out
+		duration-150;
+}
+
+/* Warning Button */
+.btn--warning {
+	@apply 
+		text-white
+		bg-yellow-500
+		hover:bg-yellow-600
+		focus:bg-yellow-700
+		active:bg-yellow-700
+		focus:outline-none
+		focus:ring-2
+		focus:ring-yellow-500
+		focus:ring-offset-2
+		transition
+		ease-in-out
+		duration-150;
+}
+
+/* Success Button */
+.btn--success {
+	@apply 
+		text-white
+		bg-green-500
+		hover:bg-green-600
+		focus:bg-green-700
+		active:bg-green-700
+		focus:outline-none
+		focus:ring-2
+		focus:ring-green-500
+		focus:ring-offset-2
+		transition
+		ease-in-out
+		duration-150;
+}
+
+/* Info Button */
+.btn--info {
+	@apply 
+		text-white
+		bg-sky-500
+		hover:bg-sky-600
+		focus:bg-sky-700
+		active:bg-sky-700
+		focus:outline-none
+		focus:ring-2
+		focus:ring-sky-500
+		focus:ring-offset-2
+		transition
+		ease-in-out
+		duration-150;
+}
+
+.btn--loader {
+	@apply
+		flex
+		items-center
+		px-4
+		py-2
+		font-semibold
+		rounded-md
+}

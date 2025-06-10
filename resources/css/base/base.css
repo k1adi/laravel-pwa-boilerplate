@@ -1,0 +1,51 @@
+.app {
+  @apply
+    flex
+    h-screen
+    overflow-hidden
+    text-light-txt
+    dark:text-dark-txt
+}
+  
+.app__sidebar {
+  @apply 
+    absolute
+    left-0
+    top-0
+    z-999
+    flex
+    flex-col
+    h-screen
+    w-72
+    overflow-y-hidden
+    duration-150
+    ease-linear
+    bg-white
+    dark:bg-dark-bg
+}
+  
+.app__content {
+  @apply
+    relative
+    flex
+    flex-1
+    flex-col
+    overflow-y-auto
+    overflow-x-hidden
+    w-full
+}
+  
+.app__header {
+  @apply 
+    sticky
+    top-0
+    z-99
+    flex
+    w-full
+    drop-shadow-1
+    dark:drop-shadow-2
+    duration-150
+    ease-linear
+    bg-white
+    dark:bg-dark-bg
+}

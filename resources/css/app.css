@@ -1,3 +1,48 @@
+@charset "UTF-8";
+
+@import 'base/base';
+@import 'base/content';
+@import 'base/typography';
+
+@import 'components/form';
+@import 'components/label';
+@import 'components/table';
+@import 'components/loader';
+@import 'components/button';
+@import 'components/dropdown';
+@import 'components/breadcrumb';
+@import 'components/toggle-bar';
+
+@import 'layout/header';
+@import 'layout/sidebar';
+@import 'layout/nav';
+
+@import 'page/welcome';
+@import 'page/guest';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 14px !important;
+  }
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+/* Add this to your CSS file */
+.Toastify__toast {
+  font-family: 'Figtree', serif !important; /* Replace with your desired font */
+}

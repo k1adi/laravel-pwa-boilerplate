@@ -1,0 +1,55 @@
+.nav {
+  @apply
+    mt-1
+    py-4
+    px-4
+    lg:px-6
+  }
+  
+.nav__list {
+  @apply
+    mb-6
+    flex
+    flex-col
+    gap-1.5
+    relative
+}
+
+.nav__list.top::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -13px;
+  width: 60%;
+  height: 1px;
+  transform: translateX(-50%);
+
+  @apply 
+    bg-gray-100
+    dark:bg-gray-600
+}
+
+.nav__link {
+  @apply 
+    relative
+    flex
+    items-center
+    gap-2.5
+    rounded-md
+    px-4
+    py-3
+    font-medium
+    text-gray-400
+    dark:text-gray-300
+    duration-200
+    ease-in-out
+}
+
+.nav__dropdown{
+  @apply
+    mt-1
+    flex
+    flex-col
+    gap-2
+    pl-6
+}

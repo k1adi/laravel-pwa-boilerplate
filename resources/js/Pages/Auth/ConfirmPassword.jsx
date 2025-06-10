@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
+import FieldGroup from '@/Components/Form/FieldGroup';
+import TextInput from '@/Components/Form/TextInput';
+import LoadingButton from '@/Components/Button/LoadingButton';
 import { Head, useForm } from '@inertiajs/react';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -17,9 +17,13 @@ export default function ConfirmPassword() {
         };
     }, []);
 
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
     const submit = (e) => {
         e.preventDefault();
-
         post(route('password.confirm'));
     };
 
@@ -32,26 +36,34 @@ export default function ConfirmPassword() {
             </div>
 
             <form onSubmit={submit}>
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
-
+                <FieldGroup 
+                    label='Password'
+                    name='password'
+                    error={errors.password}
+                    isPrimary={true}
+                    className='relative'
+                >
                     <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
+                        id='Password'
+                        type={showPassword ? 'text' : 'password'}
+                        name='Password'
                         value={data.password}
-                        className="mt-1 block w-full"
-                        isFocused={true}
                         onChange={(e) => setData('password', e.target.value)}
+                        className='mt-1 block w-full'
+                        required
+                        autoComplete='Password'
+                        placeholder='Password...'
                     />
 
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
+                    <button type='button' onClick={togglePasswordVisibility} className='absolute top-1/2 right-3'>
+                        {showPassword ? <Eye className='text-slate-400' /> : <EyeOff className='text-slate-400' />}
+                    </button>
+                </FieldGroup>
 
                 <div className="flex items-center justify-end mt-4">
-                    <PrimaryButton className="ms-4" disabled={processing}>
+                    <LoadingButton disabled={processing}>
                         Confirm
-                    </PrimaryButton>
+                    </LoadingButton>
                 </div>
             </form>
         </GuestLayout>

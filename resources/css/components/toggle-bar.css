@@ -1,0 +1,118 @@
+/* customStyles.css */
+.btn--toggle-sidebar {
+    @apply
+      block
+      relative
+      p-2
+      cursor-pointer
+      border
+      border-stroke
+      dark:border-gray-500
+      shadow-sm
+  }
+  
+  .bar {
+    @apply
+      block
+      relative
+      h-5
+      w-5
+  }
+  
+  .bar__wrapper {
+    @apply
+      block
+      absolute
+      top-0
+      right-0
+      h-full
+      w-full
+  }
+  
+  .bar__label {
+    @apply
+      relative
+      left-0
+      top-0
+      my-1
+      block
+      h-0.5
+      w-0
+      rounded-sm
+      bg-black
+      dark:bg-gray-300
+      delay-[0]
+      duration-200
+      ease-in-out
+  }
+  
+  .bar-2 {
+    @apply
+      !delay-150
+  }
+  
+  .bar-3 {
+    @apply
+      !delay-200
+  }
+  
+  .bar--open {
+    @apply
+      !w-full
+      delay-300
+  }
+  
+  .cross {
+    @apply
+      absolute
+      top-0
+      right-0
+      h-full
+      w-full
+      rotate-45
+  }
+  
+  .cross-bar-1 {
+    @apply
+      absolute
+      left-[8px]
+      top-0
+      block
+      h-full
+      w-0.5
+      rounded-sm
+      bg-black
+      dark:bg-gray-300
+      delay-300
+      duration-200
+      ease-in-out
+  }
+  
+  .cross-bar-2 {
+    @apply
+      delay-[400ms]
+      absolute
+      left-0
+      top-[8px]
+      block
+      h-0.5
+      w-full
+      rounded-sm
+      bg-black
+      dark:bg-gray-300
+      duration-200
+      ease-in-out
+  }
+  
+  .cross-bar--open {
+    @apply
+      !h-0
+      !delay-[0]
+  }
+  
+  .cross-bar--open-delayed {
+    @apply
+      !h-0
+      !delay-200
+  }
+  

@@ -1,97 +1,113 @@
-import { useEffect } from 'react';
-import Checkbox from '@/Components/Checkbox';
-import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
+import React, { useState, useEffect } from 'react';
 import { Head, Link, useForm } from '@inertiajs/react';
+import GuestLayout from '@/Layouts/GuestLayout';
+
+import FieldGroup from '@/Components/Form/FieldGroup';
+import TextInput from '@/Components/Form/TextInput';
+import Checkbox from '@/Components/Form/Checkbox';
+import LoadingButton from '@/Components/Button/LoadingButton';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function Login({ status, canResetPassword }) {
-    const { data, setData, post, processing, errors, reset } = useForm({
-        email: '',
-        password: '',
-        remember: false,
-    });
+	const { data, setData, post, processing, errors, reset } = useForm({
+		username: '',
+		password: '',
+		remember: false,
+	});
 
-    useEffect(() => {
-        return () => {
-            reset('password');
-        };
-    }, []);
+	useEffect(() => {
+		return () => {
+			reset('password');
+		};
+	}, []);
 
-    const submit = (e) => {
-        e.preventDefault();
+	const [showPassword, setShowPassword] = useState(false);
+	const togglePasswordVisibility = () => {
+		setShowPassword(!showPassword);
+	};
 
-        post(route('login'));
-    };
+	const submit = (e) => {
+		e.preventDefault();
+		post(route('login'));
+	};
 
-    return (
-        <GuestLayout>
-            <Head title="Log in" />
+	return (
+		<GuestLayout>
+			<Head title='Log in' />
 
-            {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
+			{status && <div className='mb-4 font-medium text-sm text-green-600'>{status}</div>}
 
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="email" value="Email" />
+			<form onSubmit={submit}>
+				<FieldGroup 
+					label='Username'
+					name='username'
+					error={errors.username}
+					isPrimary={true}
+				>
+					<TextInput
+						id='username'
+						name='username'
+						value={data.username}
+						onChange={(e) => setData('username', e.target.value)}
+						className='mt-1 block w-full'
+						required
+						isFocused={true}
+						autoComplete='username'
+						placeholder='Username...'
+					/>
+				</FieldGroup>
 
-                    <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        isFocused={true}
-                        onChange={(e) => setData('email', e.target.value)}
-                    />
+				<FieldGroup 
+					label='Password'
+					name='password'
+					error={errors.password}
+					isPrimary={true}
+					className='relative'
+				>
+					<TextInput
+						id='Password'
+						type={showPassword ? 'text' : 'password'}
+						name='Password'
+						value={data.password}
+						onChange={(e) => setData('password', e.target.value)}
+						className='mt-1 block w-full'
+						required
+						autoComplete='Password'
+						placeholder='Password...'
+					/>
 
-                    <InputError message={errors.email} className="mt-2" />
-                </div>
+					<button type='button' onClick={togglePasswordVisibility} className='absolute top-1/2 right-3'>
+						{showPassword ? <Eye className='text-slate-400' /> : <EyeOff className='text-slate-400' />}
+					</button>
+				</FieldGroup>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+				<div className='block mt-4'>
+					<label className='flex items-center'>
+						<Checkbox
+							name='remember'
+							checked={data.remember}
+							onChange={(e) => setData('remember', e.target.checked)}
+						/>
+						<span className='ms-2 text-sm text-dark-primary hover:text-dark-primary/70 dark:text-light-primary dark:hover:text-light-primary/70'>Remember me</span>
+					</label>
+				</div>
 
-                    <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="current-password"
-                        onChange={(e) => setData('password', e.target.value)}
-                    />
+				<div className='flex items-center justify-end mt-4'>
+					{canResetPassword && !processing && (
+						<Link
+							href={route('password.request')}
+							className={`me-4 underline text-sm text-dark-primary hover:text-dark-primary/70 dark:text-light-primary dark:hover:text-light-primary/70 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-dark-primary dark:focus:ring-light-primary`}
+						>
+							Forgot your password?
+						</Link>
+					)}
 
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div className="block mt-4">
-                    <label className="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            checked={data.remember}
-                            onChange={(e) => setData('remember', e.target.checked)}
-                        />
-                        <span className="ms-2 text-sm text-gray-600">Remember me</span>
-                    </label>
-                </div>
-
-                <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
-
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Log in
-                    </PrimaryButton>
-                </div>
-            </form>
-        </GuestLayout>
-    );
+					
+					<LoadingButton disabled={processing}>
+						Log in
+					</LoadingButton>
+				</div>
+			</form>
+		</GuestLayout>
+	);
 }

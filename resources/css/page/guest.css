@@ -1,0 +1,32 @@
+.guest__parent {
+	@apply
+		flex
+		flex-col
+		min-h-screen
+		items-center
+		justify-center
+		bg-light-bg
+		dark:bg-dark-bg
+}
+
+.guest__logo {
+	@apply
+		w-40
+		h-40
+    text-light-primary
+    dark:text-dark-primary
+}
+
+.guest__card {
+	@apply
+		w-full
+		sm:max-w-md
+		mt-6
+		px-6
+		py-4
+		bg-white
+		dark:bg-gray-900
+		shadow-md
+		overflow-hidden
+		sm:rounded-lg
+}

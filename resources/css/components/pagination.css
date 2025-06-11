@@ -1,0 +1,77 @@
+/* Pagination Component Styles using BEM naming convention */
+
+/* Block */
+.pagination {
+	@apply
+		flex
+		items-center
+		justify-between
+		pt-6
+		pb-4
+}
+
+/* Elements */
+.pagination__info {
+	@apply
+		text-sm
+}
+
+.pagination__info b {
+	@apply
+		font-medium
+}
+
+.pagination__nav {
+	@apply
+		flex
+		flex-row
+		items-center
+}
+
+.pagination__button {
+	@apply
+		flex-1
+		px-2
+		py-1
+		sm:px-3
+		sm:py-2
+		ms-3
+		text-sm
+		font-medium
+		border
+		border-gray-300
+		rounded-lg
+}
+
+.pagination__counter {
+	@apply
+		p-2
+}
+
+.pagination__label--mobile {
+	@apply
+		block
+		sm:hidden
+}
+
+.pagination__label--desktop {
+	@apply
+		hidden
+		sm:block
+}
+
+/* Modifiers */
+.pagination__button--enabled {
+	@apply
+		text-gray-500
+		bg-white
+		hover:bg-gray-100
+		hover:text-gray-700
+}
+
+.pagination__button--disabled {
+	@apply
+		text-gray-400
+		bg-gray-200
+		cursor-not-allowed
+}

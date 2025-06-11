@@ -24,8 +24,8 @@
     duration-200
     hover:bg-gray-50
     focus-within:bg-gray-50
-    dark:hover:bg-gray-600
-    dark:focus-within:bg-gray-600
+    dark:hover:bg-gray-900
+    dark:focus-within:bg-gray-900
 }
 
 .table tbody tr td {

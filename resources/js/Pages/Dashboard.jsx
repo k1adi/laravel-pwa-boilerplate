@@ -4,7 +4,7 @@ import DashboardLayout from '@/Layouts/DashboardLayout';
 function Dashboard() {
   return (
     <div className='content-box'>
-      <p>Dashboard page</p>
+      <h1 className='text--title'>Dashboard Page</h1>
     </div>
   );
 }

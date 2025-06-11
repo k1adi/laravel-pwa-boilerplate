@@ -32,8 +32,7 @@ class HandleInertiaRequests extends Middleware
         $user = $request->user();
 
         // Get user permissions
-        // $permissions = $user ? $user->grantPermission() : [];
-        $permissions = [];
+        $permissions = $user ? $user->grantPermission() : [];
 
         return [
             ...parent::share($request),

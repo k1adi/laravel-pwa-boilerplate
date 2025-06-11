@@ -9,7 +9,10 @@ export default function ToggleTheme({ className = '' }) {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
+  const toggleTheme = (e) => {
+    e.preventDefault();
+    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
+  };
 
   return (
     <button 

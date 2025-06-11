@@ -2,7 +2,8 @@ import { usePage } from '@inertiajs/react';
 import NavGroup from './NavGroup';
 import NavLink from './NavLink';
 import AuthMenu from './Menu/AuthMenu';
-import { ChevronDown, Bug, LayoutDashboard, UserCog } from 'lucide-react';
+import { ChevronDown, Bug, LayoutDashboard, UserCog, Database } from 'lucide-react';
+import DatabaseMenu from './Menu/DatabaseMenu';
 
 export default function NavMenu({ sidebarExpand, setSidebarExpand }) {
   const { url: inertiaUrl } = usePage();
@@ -24,6 +25,31 @@ export default function NavMenu({ sidebarExpand, setSidebarExpand }) {
             text='Dashboard'
             active={urlPath[1] == 'dashboard'}
           />
+        {/* } */}
+
+        {/* {databaseMenu.some(value => permissions.includes(value)) && */}
+          <NavGroup isActive={urlPath[1] == 'database'}>
+            {(handleClick, open) => {
+              return (
+                <>
+                  <NavLink
+                    icon={<Database />}
+                    text='Database'
+                    onClick={(e) => {
+                      e.preventDefault();
+                      sidebarExpand ? handleClick() : setSidebarExpand(true); 
+                    }}
+                    active={urlPath[1] == 'database'}
+                  >
+                    <ChevronDown className={`absolute right-4 top-1/2 -translate-y-1/2 ${open && 'rotate-180'}`} />
+                  </NavLink>
+                  <div className={`translate transform overflow-hidden ${!open && 'hidden'}`} >
+                    <DatabaseMenu {...menuProps}/>
+                  </div>
+                </>
+              );
+            }}
+          </NavGroup>
         {/* } */}
         
         {/* Authorization */}

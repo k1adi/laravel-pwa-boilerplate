@@ -12,6 +12,7 @@
 @import 'components/dropdown';
 @import 'components/breadcrumb';
 @import 'components/toggle-bar';
+@import 'components/pagination';
 
 @import 'layout/header';
 @import 'layout/sidebar';

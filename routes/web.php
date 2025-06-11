@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BuController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -28,6 +29,8 @@ Route::middleware(['auth', 'verified'])->group(function() {
     })->name('dashboard');
 
     Route::resources([
+        'database/bus' => BuController::class,
+
         'authorization/users' => UserController::class,
         'authorization/roles' => RoleController::class,
         'authorization/permissions' => PermissionController::class,

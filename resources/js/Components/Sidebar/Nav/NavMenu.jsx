@@ -4,6 +4,7 @@ import NavLink from './NavLink';
 import AuthMenu from './Menu/AuthMenu';
 import { ChevronDown, Bug, LayoutDashboard, UserCog, Database } from 'lucide-react';
 import DatabaseMenu from './Menu/DatabaseMenu';
+import InstallButton from '@/Components/InstallButton';
 
 export default function NavMenu({ sidebarExpand, setSidebarExpand }) {
   const { url: inertiaUrl } = usePage();
@@ -84,6 +85,9 @@ export default function NavMenu({ sidebarExpand, setSidebarExpand }) {
           <a className='nav__link' href='https://forms.gle/TdkZUmF8ay24trRL9' target='_blank'>
             <Bug /> Report Bug/Issues
           </a>
+        </li>
+        <li>
+          <InstallButton />
         </li>
       </ul>
     </nav>

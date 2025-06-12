@@ -6,9 +6,12 @@ import { Inertia } from '@inertiajs/inertia';
 import { createRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { NetworkStatusProvider } from './Context/NetworkStatusContext';
 import { LoadingProvider, useLoading } from './Context/LoadingContext';
+import { registerServiceWorker } from './sw';
 
-const appName = import.meta.env.VITE_APP_NAME || 'PWA Boilerplate';
+registerServiceWorker();
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel PWA';
 
 createInertiaApp({
   title: (title) => `${title} - ${appName}`,
@@ -19,7 +22,9 @@ createInertiaApp({
     function AppWrapper() {
       return (
         <LoadingProvider>
-          <InnerApp />
+          <NetworkStatusProvider>
+            <InnerApp />
+          </NetworkStatusProvider>
         </LoadingProvider>
       );
     }

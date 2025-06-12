@@ -5,6 +5,7 @@ import Sidebar from '@/Components/Sidebar/Sidebar';
 import { ToastContent, ToastWrapper } from '@/Components/Notification/Toast';
 import { useLoading } from '@/Context/LoadingContext';
 import LoaderScreen from '@/Components/Loader/LoaderScreen';
+import NetworkStatusIndicator from '@/Components/NetworkStatusIndicator';
 
 export default function DashboardLayout({ title, children }) {
   const { loading } = useLoading();
@@ -36,6 +37,9 @@ export default function DashboardLayout({ title, children }) {
             </div>
           </div>
         </div>
+
+        {/* Network Status Indicator */}
+        <NetworkStatusIndicator />
       </main>
     </>
   );

@@ -23,6 +23,11 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 });
 
+// Offline page route - accessible without authentication
+Route::get('/offline', function () {
+    return Inertia::render('Offline');
+})->name('offline');
+
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
@@ -43,4 +48,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-

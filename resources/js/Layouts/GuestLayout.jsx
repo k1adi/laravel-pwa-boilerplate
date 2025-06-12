@@ -1,5 +1,6 @@
 import { Link } from '@inertiajs/react';
 import { BrickWall } from 'lucide-react';
+import NetworkStatusIndicator from '@/Components/NetworkStatusIndicator';
 
 export default function Guest({ children }) {
   return (
@@ -13,6 +14,9 @@ export default function Guest({ children }) {
       <div className="guest__card">
         {children}
       </div>
+
+      {/* Network Status Indicator */}
+      <NetworkStatusIndicator />
     </div>
   );
 }

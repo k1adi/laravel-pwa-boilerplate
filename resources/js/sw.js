@@ -11,6 +11,9 @@ export function registerServiceWorker() {
                 // Show a notification that the app is ready for offline use
                 console.log('App is ready for offline use.');
             },
+            // Enable immediate claiming to ensure the service worker
+            // takes control of the page immediately
+            immediate: true
         });
     }
 }

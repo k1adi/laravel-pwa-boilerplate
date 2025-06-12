@@ -35,6 +35,8 @@ class PermissionSeeder extends Seeder
             'bu_create',
             'bu_edit',
             'bu_delete',
+
+            'profile_edit'
         ];
 
         foreach ($permissions as $permission) {

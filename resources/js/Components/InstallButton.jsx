@@ -20,12 +20,10 @@ export default function InstallButton() {
   }
   
   return (
-    <button
+    <span
       onClick={handleInstallClick}
-      className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
-    >
-      <Download size={16} />
-      Install App
-    </button>
+      className='nav__link' >
+        <Download/> Install App
+    </span>
   );
 }

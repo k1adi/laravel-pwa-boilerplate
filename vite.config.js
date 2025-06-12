@@ -38,49 +38,12 @@ export default defineConfig({
                 ]
             },
             workbox: {
-                globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2}'],
+                skipWaiting: true,
+                clientsClaim: true,
+                globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2,json}'],
+                navigateFallback: '/offline',
+                navigateFallbackDenylist: [/^\/api\//],
                 runtimeCaching: [
-                    // Inertia requests
-                    {
-                        urlPattern: ({ request }) => {
-                            // Check if it's an Inertia request by looking at headers
-                            return request.headers.has('X-Inertia') || 
-                                   request.headers.has('x-inertia') ||
-                                   // Also match page URLs that Inertia would handle
-                                   !request.url.includes('/api/') && 
-                                   request.mode === 'cors' &&
-                                   request.method === 'GET';
-                        },
-                        handler: 'NetworkFirst',
-                        options: {
-                            cacheName: 'inertia-pages-cache',
-                            expiration: {
-                                maxEntries: 50,
-                                maxAgeSeconds: 10 * 60, // 10 minutes
-                            },
-                            networkTimeoutSeconds: 10,
-                            cacheableResponse: {
-                                statuses: [0, 200]
-                            }
-                        }
-                    },
-                    // API requests
-                    {
-                        urlPattern: ({ url }) => url.pathname.startsWith('/api'),
-                        handler: 'NetworkFirst',
-                        options: {
-                            cacheName: 'api-cache',
-                            expiration: {
-                                maxEntries: 50,
-                                maxAgeSeconds: 5 * 60, // 5 minutes
-                            },
-                            networkTimeoutSeconds: 10,
-                            cacheableResponse: {
-                                statuses: [0, 200]
-                            }
-                        }
-                    },
-                    // HTML pages
                     {
                         urlPattern: ({ request }) => request.destination === 'document',
                         handler: 'NetworkFirst',
@@ -90,12 +53,27 @@ export default defineConfig({
                                 maxEntries: 30,
                                 maxAgeSeconds: 24 * 60 * 60, // 1 day
                             },
+                            networkTimeoutSeconds: 3,
                             cacheableResponse: {
                                 statuses: [0, 200]
                             }
                         }
                     },
-                    // JavaScript and CSS
+                    {
+                        urlPattern: ({ url }) => url.pathname.startsWith('/api'),
+                        handler: 'NetworkFirst',
+                        options: {
+                            cacheName: 'api-cache',
+                            expiration: {
+                                maxEntries: 50,
+                                maxAgeSeconds: 5 * 60, // 5 minutes
+                            },
+                            networkTimeoutSeconds: 3,
+                            cacheableResponse: {
+                                statuses: [0, 200]
+                            }
+                        }
+                    },
                     {
                         urlPattern: ({ request }) => 
                             request.destination === 'script' || 
@@ -112,7 +90,6 @@ export default defineConfig({
                             }
                         }
                     },
-                    // Images
                     {
                         urlPattern: ({ request }) => request.destination === 'image',
                         handler: 'CacheFirst',
@@ -127,7 +104,6 @@ export default defineConfig({
                             }
                         }
                     },
-                    // Fonts
                     {
                         urlPattern: ({ request }) => request.destination === 'font',
                         handler: 'CacheFirst',
@@ -142,7 +118,6 @@ export default defineConfig({
                             }
                         }
                     },
-                    // Google Fonts
                     {
                         urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
                         handler: 'CacheFirst',

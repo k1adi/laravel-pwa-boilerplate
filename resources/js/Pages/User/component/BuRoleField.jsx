@@ -1,3 +1,4 @@
+import ExpandableSection from '@/Components/ExpandableSection';
 import FieldGroup from '@/Components/Form/FieldGroup';
 import Select from 'react-select';
 import ConfirmDelete from '@/Components/Notification/confirmDelete';
@@ -60,10 +61,8 @@ export default function BuRoleField({ data, setData, errors, processing, selectO
   }
 
   return (
-    <div className='content-box'>
-      <div className='flex justify-between items-center'>
-        <p className='text-xl font-bold'>Bu and Roles</p>
-
+    <ExpandableSection title='Bu & Roles' >
+      <div className='flex justify-end'>
         {page === 'User' && (
           <ActionButton
             isDisabled={processing}
@@ -126,6 +125,6 @@ export default function BuRoleField({ data, setData, errors, processing, selectO
           Submit
         </LoadingButton>
       </div>
-    </div>
+    </ExpandableSection>
   );
 }

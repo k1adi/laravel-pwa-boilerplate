@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
 
 class UpdateProfileRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class UpdateProfileRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Gate::allows('profile_edit');
     }
 
     /**
@@ -21,8 +23,14 @@ class UpdateProfileRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('user');
+
         return [
-            //
+            'username' => ['required', 'string', 'max:30', Rule::unique('users')->ignore($id)],
+            'fullname' => ['required', 'string', 'max:75'],
+            'email' => ['required', 'string', 'max:50', Rule::unique('users')->ignore($id)],
+            'phone' => ['required', 'string', 'max:16', Rule::unique('users')->ignore($id)],
+            'password' => ['nullable', 'string'],
         ];
     }
 }

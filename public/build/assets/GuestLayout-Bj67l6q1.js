@@ -1,0 +1,1 @@
+import{j as s,x as r}from"./app-BlGjxBIj.js";import{B as a}from"./brick-wall-C-5oKb24.js";function x({children:e}){return s.jsxs("div",{className:"guest__parent",children:[s.jsx("div",{children:s.jsx(r,{href:"/",children:s.jsx(a,{className:"guest__logo"})})}),s.jsx("div",{className:"guest__card",children:e})]})}export{x as G};

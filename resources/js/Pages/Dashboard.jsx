@@ -10,7 +10,7 @@ function Dashboard() {
   
   return (
     <div className='content-box'>
-      <h1 className='text--title'>Dashboard Page</h1>
+      <h1 className='text--title'>Clone Dashboard Page</h1>
 
       <p> fpdLink</p>
       <a href={fpdLink} target='_blank' rel="noopener noreferrer">FPD</a>
